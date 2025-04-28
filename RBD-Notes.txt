@@ -262,3 +262,11 @@ along with rst-check, leaving rstcheck as the linter. Good enough.
     -> from rinoh.frontend.rst import DocutilsInlineNode
   - Nonetheless the PDF Builds!! ** NEVER MIND **
 
+12-Mar-2025
+-----------
+* See https://ascomtalk.groups.io/g/Developer/message/9057 on a new ImageArrayResponse class
+  for Camera. This needs to go into 1.0.3 or 1.1.0 probably.
+
+28-Apr-2025
+-----------
+* Another request for image encoding for Camera. OK get off my butt and address GitHub Issue #18.

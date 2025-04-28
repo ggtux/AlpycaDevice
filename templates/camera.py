@@ -14,8 +14,8 @@
 
 from falcon import Request, Response, HTTPBadRequest, before
 from logging import Logger
-from shr import PropertyResponse, MethodResponse, PreProcessRequest, \
-                StateValue, get_request_field, to_bool
+from shr import PropertyResponse, MethodResponse, ImageArrayResponse, \
+                PreProcessRequest, StateValue, get_request_field, to_bool
 from exceptions import *        # Nothing but exception classes
 
 logger: Logger = None
@@ -220,7 +220,7 @@ class bayeroffsetx:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -238,7 +238,7 @@ class bayeroffsety:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -256,7 +256,7 @@ class binx:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -271,7 +271,7 @@ class binx:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         binxstr = get_request_field('BinX', req)      # Raises 400 bad request if missing
         try:
             binx = int(binxstr)
@@ -297,7 +297,7 @@ class biny:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -312,7 +312,7 @@ class biny:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         binystr = get_request_field('BinY', req)      # Raises 400 bad request if missing
         try:
             biny = int(binystr)
@@ -338,7 +338,7 @@ class camerastate:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -356,7 +356,7 @@ class cameraxsize:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -374,7 +374,7 @@ class cameraysize:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -392,7 +392,7 @@ class canabortexposure:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -410,7 +410,7 @@ class canasymmetricbin:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -428,7 +428,7 @@ class canfastreadout:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -446,7 +446,7 @@ class cangetcoolerpower:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -464,7 +464,7 @@ class canpulseguide:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -482,7 +482,7 @@ class cansetccdtemperature:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -500,7 +500,7 @@ class canstopexposure:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -518,7 +518,7 @@ class ccdtemperature:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -536,7 +536,7 @@ class cooleron:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -551,7 +551,7 @@ class cooleron:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         cooleronstr = get_request_field('CoolerOn', req)      # Raises 400 bad request if missing
         try:
             cooleron = to_bool(cooleronstr)
@@ -577,7 +577,7 @@ class coolerpower:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -595,7 +595,7 @@ class electronsperadu:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -613,7 +613,7 @@ class exposuremax:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -631,7 +631,7 @@ class exposuremin:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -649,7 +649,7 @@ class exposureresolution:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -667,7 +667,7 @@ class fastreadout:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -682,7 +682,7 @@ class fastreadout:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         fastreadoutstr = get_request_field('FastReadout', req)      # Raises 400 bad request if missing
         try:
             fastreadout = to_bool(fastreadoutstr)
@@ -708,7 +708,7 @@ class fullwellcapacity:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -726,7 +726,7 @@ class gain:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -741,7 +741,7 @@ class gain:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         gainstr = get_request_field('Gain', req)      # Raises 400 bad request if missing
         try:
             gain = int(gainstr)
@@ -767,7 +767,7 @@ class gainmax:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -785,7 +785,7 @@ class gainmin:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -803,7 +803,7 @@ class gains:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -821,7 +821,7 @@ class hasshutter:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -839,7 +839,7 @@ class heatsinktemperature:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -857,33 +857,30 @@ class imagearray:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
+        if not ##IS IMAGE READY##
+            resp.text = PropertyResponse(None, req,
+                            InvalidOperationException()).json
+            return
+
         try:
-            # ----------------------
-            val = ## GET PROPERTY ##
-            # ----------------------
-            resp.text = PropertyResponse(val, req).json
+            # ---------------------------
+            array = ## GET IMAGE ARRAY ##
+            # ---------------------------
+            msg = ImageArrayResponse(array, req)
+            resp.data = msg.binary
+            resp.content_type = 'application/imagebytes'
         except Exception as ex:
             resp.text = PropertyResponse(None, req,
                             DriverException(0x500, 'Camera.Imagearray failed', ex)).json
 
 @before(PreProcessRequest(maxdev))
-class imagearrayvariant:
+class imagearrayvariant(imagearray):
 
+    ## SYNONYM FOR IMAGEARRAY##
     def on_get(self, req: Request, resp: Response, devnum: int):
-        if not ##IS DEV CONNECTED##:
-            resp.text = PropertyResponse(None, req,
-                            NotConnectedException()).json
-            return
-        
-        try:
-            # ----------------------
-            val = ## GET PROPERTY ##
-            # ----------------------
-            resp.text = PropertyResponse(val, req).json
-        except Exception as ex:
-            resp.text = PropertyResponse(None, req,
-                            DriverException(0x500, 'Camera.Imagearrayvariant failed', ex)).json
+        super().on_get(req, resp, devnum)
+    ##ALTERNATIVELY RETURN NOTIMPLEMENTEDEXCEPTION##
 
 @before(PreProcessRequest(maxdev))
 class imageready:
@@ -893,7 +890,7 @@ class imageready:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -911,7 +908,7 @@ class ispulseguiding:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -929,7 +926,7 @@ class lastexposureduration:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -947,7 +944,7 @@ class lastexposurestarttime:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -965,7 +962,7 @@ class maxadu:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -983,7 +980,7 @@ class maxbinx:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1001,7 +998,7 @@ class maxbiny:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1019,7 +1016,7 @@ class numx:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1034,7 +1031,7 @@ class numx:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         numxstr = get_request_field('NumX', req)      # Raises 400 bad request if missing
         try:
             numx = int(numxstr)
@@ -1060,7 +1057,7 @@ class numy:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1075,7 +1072,7 @@ class numy:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         numystr = get_request_field('NumY', req)      # Raises 400 bad request if missing
         try:
             numy = int(numystr)
@@ -1101,7 +1098,7 @@ class offset:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1116,7 +1113,7 @@ class offset:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         offsetstr = get_request_field('Offset', req)      # Raises 400 bad request if missing
         try:
             offset = int(offsetstr)
@@ -1142,7 +1139,7 @@ class offsetmax:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1160,7 +1157,7 @@ class offsetmin:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1178,7 +1175,7 @@ class offsets:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1196,7 +1193,7 @@ class percentcompleted:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1214,7 +1211,7 @@ class pixelsizex:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1232,7 +1229,7 @@ class pixelsizey:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1250,7 +1247,7 @@ class readoutmode:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1265,7 +1262,7 @@ class readoutmode:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         readoutmodestr = get_request_field('ReadoutMode', req)      # Raises 400 bad request if missing
         try:
             readoutmode = int(readoutmodestr)
@@ -1291,7 +1288,7 @@ class readoutmodes:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1309,7 +1306,7 @@ class sensorname:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1327,7 +1324,7 @@ class sensortype:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1345,7 +1342,7 @@ class setccdtemperature:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1360,7 +1357,7 @@ class setccdtemperature:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         setccdtemperaturestr = get_request_field('SetCCDTemperature', req)      # Raises 400 bad request if missing
         try:
             setccdtemperature = float(setccdtemperaturestr)
@@ -1386,7 +1383,7 @@ class startx:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1401,7 +1398,7 @@ class startx:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         startxstr = get_request_field('StartX', req)      # Raises 400 bad request if missing
         try:
             startx = int(startxstr)
@@ -1427,7 +1424,7 @@ class starty:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1442,7 +1439,7 @@ class starty:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         startystr = get_request_field('StartY', req)      # Raises 400 bad request if missing
         try:
             starty = int(startystr)
@@ -1468,7 +1465,7 @@ class subexposureduration:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1483,7 +1480,7 @@ class subexposureduration:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         subexposuredurationstr = get_request_field('SubExposureDuration', req)      # Raises 400 bad request if missing
         try:
             subexposureduration = float(subexposuredurationstr)
@@ -1509,7 +1506,7 @@ class abortexposure:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # -----------------------------
             ### DEVICE OPERATION(PARAM) ###
@@ -1527,7 +1524,7 @@ class pulseguide:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         directionstr = get_request_field('Direction', req)      # Raises 400 bad request if missing
         try:
             direction = int(directionstr)
@@ -1565,7 +1562,7 @@ class startexposure:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         durationstr = get_request_field('Duration', req)      # Raises 400 bad request if missing
         try:
             duration = float(durationstr)
@@ -1599,7 +1596,7 @@ class stopexposure:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # -----------------------------
             ### DEVICE OPERATION(PARAM) ###

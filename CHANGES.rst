@@ -1,3 +1,12 @@
+Version 1.0.3 Update (2025-05-01)
+=================================
+* This response to `GitHub Issue  #18
+  <https://github.com/ASCOMInitiative/AlpycaDevice/issues/18>`_ which adds
+  ImageBytes encoding for Camera.ImageArray, thanks to IanCassTwo and
+  EmileRouxSMB on GitHub.
+* Catch non-numeric trash in ClientTransactionID, and in that case silently
+  return 0.
+
 Version 1.0.2 Update (2025-02-16)
 =================================
 * This responds to `GitHub Issue  #17

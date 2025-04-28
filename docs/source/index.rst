@@ -25,9 +25,8 @@ conforming Alpaca device with a minimum of "just in time learning".
     **Start Here:** :doc:`/quickstart` then look through :doc:`/introduction`.
 
 .. Note::
-    This is the 1.0.2 (February 20, 2025) updated production version. This
-    contains the additions to the interfaces for Platform 7.
-    See |plat7changes|. For Release Notes on this SDK see the
+    This is the 1.0.3 (May 1, 2025) updated production version.
+    For Release Notes on this SDK see the
     |changes| on the |github|.
 
 For background see |about| and |alpcon| on the |ascsite|. As an astronomy
@@ -94,11 +93,6 @@ developer wanting to use Alpaca, we suggest you look over |devhelp| and join the
 
     <a href="https://raw.githubusercontent.com/BobDenny/AlpycaDevice/master/Current%20ConformU%20Protocol.txt" target="_blank">
     protocol tests</a>
-
-.. |plat7changes| raw:: html
-
-    <a href="https://ascom-standards.org/newdocs/relnotes.html" target="_blank">
-    Release Notes for ASCOM Platform 7</a>
 
 .. toctree::
     :maxdepth: 2

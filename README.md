@@ -1,6 +1,6 @@
 # AlpycaDevice - Python Alpaca Device Driver SDK
 
-## Version 1.0.2, February 17, 2025 (ASCOM Platform 7)
+## Version 1.0.3, May 1, 2025 (ASCOM Platform 7)
 
 <img align="right" width="210" height="166" hspace="20" vspace="20" src="https://ascom-standards.org/alpyca/readme-assets/AlpacaLogo210.png">
 
@@ -8,7 +8,7 @@ This project is a lightweight Python framework for a device
 driver that supports the Alpaca protocol and ASCOM Standards as of Platform 7. It implements a basic Rotator device with a simple simulation for Conform tests. **Templates for all ASCOM device types are provided**.
 The "boiler plate" logic remains the same for any device.
 
-## [AlpycaDevice SDK 1.0.2 Documentation](https://ascom-standards.org/alpycadevice/)
+## [AlpycaDevice SDK 1.0.3 Documentation](https://ascom-standards.org/alpycadevice/)
 
 [![AlpycaDevice Video](https://raw.githubusercontent.com/BobDenny/AlpycaDevice/master/docs/source/vthumb.png)](https://www.youtube.com/watch?v=soGb0j4iOt4 "AlpycaDevice Video")
 
@@ -22,8 +22,7 @@ skeleton Alpaca driver for any ASCOM device using the provided templates.
 
 ## Status of this project
 
-Production release includes ASCOM Platform 7 Interface Additions. For details see
-[Release Notes for Interfaces as of ASCOM Platform 7](https://ascom-standards.org/newdocs/relnotes.html)
+See [CHANGES](https://github.com/ASCOMInitiative/AlpycaDevice/blob/master/CHANGES.rst) for the latest release notes.
 
 **Templates for all ASCOM device types are included**. While preserving
 simplicity as much as possible, it can easily be configured for
