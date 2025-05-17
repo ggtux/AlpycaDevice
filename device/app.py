@@ -59,7 +59,8 @@
 import sys
 import traceback
 import inspect
-from wsgiref.simple_server import WSGIRequestHandler, make_server
+import socket
+from wsgiref.simple_server import make_server, WSGIServer, WSGIRequestHandler
 from enum import IntEnum
 
 # -- isort wants the above line to be blank --
@@ -271,7 +272,17 @@ def main():
     # SERVER APPLICATION
     # ------------------
     # Using the lightweight built-in Python wsgi.simple_server
-    with make_server(Config.ip_address, Config.port, falc_app, handler_class=LoggingWSGIRequestHandler) as httpd:
+    class DualStackServer(WSGIServer):
+        def __init__(self, server_address, RequestHandlerClass): #server_address is tuple host,
+            try:
+                self.address_family = socket.AF_INET6
+                super().__init__(server_address, RequestHandlerClass)
+            except Exception :
+                self.address_family = socket.AF_INET
+                super().__init__(server_address, RequestHandlerClass)
+
+    with make_server(Config.ip_address, Config.port, falc_app,
+                server_class=DualStackServer, handler_class=LoggingWSGIRequestHandler) as httpd:
         logger.info(f'==STARTUP== Serving on {Config.ip_address}:{Config.port}. Time stamps are UTC.')
         # Serve until process is killed
         httpd.serve_forever()
