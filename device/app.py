@@ -53,8 +53,9 @@
 #               GitHub issue #1
 # 13-Sep-2024   rbd 1.0 Add support for enum classes within the responder modules
 #               GitHub issue #12
-# 03-Jan-2025   rbd 1.1 Clarify devices vs device types at import site. Comment only,
+# 03-Jan-2025   rbd 1.0.1 Clarify devices vs device types at import site. Comment only,
 #               no logic changes.
+# 20-May-2025   rbd 1.0.3 Issue #19. Allow switching between IPv4 and IPv6 in config.
 #
 import sys
 import traceback
@@ -272,18 +273,44 @@ def main():
     # SERVER APPLICATION
     # ------------------
     # Using the lightweight built-in Python wsgi.simple_server
+    #
+    # The following should allow both IPv4 and IPv6 to be served. But it does
+    # not. See comments below. TODO THIS CLASS UNUSED
+    #
     class DualStackServer(WSGIServer):
         def __init__(self, server_address, RequestHandlerClass): #server_address is tuple host,
-            try:
-                self.address_family = socket.AF_INET6
-                super().__init__(server_address, RequestHandlerClass)
-            except Exception :
-                self.address_family = socket.AF_INET
-                super().__init__(server_address, RequestHandlerClass)
-
+            self.address_family = socket.AF_INET6   # With "::" should allow mapped IPV4 as well
+            super().__init__(server_address, RequestHandlerClass)
+            # Fails InvalidArgument though  supposedly supported on Windows 7/8/10/11
+            # https://learn.microsoft.com/en-us/windows/win32/winsock/ipproto-ipv6-socket-options
+            self.socket.setsockopt(socket.IPPROTO_IPV6, socket.IPV6_V6ONLY, 0)
+    #
+    # This is an IPv6-only server class
+    #
+    class IPv6Server(WSGIServer):
+        def __init__(self, server_address, RequestHandlerClass): #server_address is tuple host,
+            self.address_family = socket.AF_INET6
+            super().__init__(server_address, RequestHandlerClass)
+    #
+    # This serves only IPV4
+    #
+    class IPv4Server(WSGIServer):
+        def __init__(self, server_address, RequestHandlerClass): #server_address is tuple host,
+            self.address_family = socket.AF_INET
+            super().__init__(server_address, RequestHandlerClass)
+    #
+    # Server address family per the configuration
+    #
+    if Config.addr_family == 'ipv6':
+        server_class = IPv6Server
+    else:
+        server_class = IPv4Server
+    #
+    # Startup the HTTP engine with Falcon on top.
+    #
     with make_server(Config.ip_address, Config.port, falc_app,
-                server_class=DualStackServer, handler_class=LoggingWSGIRequestHandler) as httpd:
-        logger.info(f'==STARTUP== Serving on {Config.ip_address}:{Config.port}. Time stamps are UTC.')
+                server_class=server_class, handler_class=LoggingWSGIRequestHandler) as httpd:
+        logger.info(f'==STARTUP== Serving {Config.addr_family} on {Config.ip_address}:{Config.port}. Time stamps are UTC.')
         # Serve until process is killed
         httpd.serve_forever()
 

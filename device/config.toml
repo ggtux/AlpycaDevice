@@ -1,7 +1,8 @@
 title = "Alpaca Sample Driver (Rotator)"
 
 [network]
-ip_address = ''             # Any address
+addr_family = 'ipv4'        # Server answers on 'ipv4' or 'ipv6'
+ip_address = ''             # Nominally any address ('' for ipv4 or '::1' for ipv6)
 port = 5555
 
 [server]
