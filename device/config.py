@@ -39,8 +39,9 @@
 # 17-Feb-2024   ltf 0.6 GitHub PR #11 "docker friendly configuration"
 #               https://github.com/ASCOMInitiative/AlpycaDevice/pull/11
 #               (manually merged). Remove comment about "slimy hack".
-# 20-Ferb-2024  rbd 0.7 Add sync_write_connected to control sync/async
+# 20-Feb-2024   rbd 0.7 Add sync_write_connected to control sync/async
 #               write-Connected behavior.
+# 20-May-2025   rbd 1.0.3 Switchable ipV4 or ipV6
 #
 import sys
 import toml
@@ -80,7 +81,8 @@ class Config:
     # ---------------
     # Network Section
     # ---------------
-    ip_address: str = get_toml('network', 'ip_address')
+    addr_family: str = get_toml('network', 'addr_family')   # 'ipv4' or 'ipv6'
+    ip_address: str = get_toml('network', 'ip_address')     # appropriate for family
     port: int = get_toml('network', 'port')
     # --------------
     # Server Section

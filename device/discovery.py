@@ -40,11 +40,14 @@
 # 24-Dec-2022   rbd 0.1 Logging
 # 25-Dec-2022   rbd 0.1 Logging typing for intellisense
 # 27-Dec-2022   rbd 0.1 MIT license and module header. No mcast on device, duh!
+# 20-May-2025   rbd 1.0.3 Switchable IPV4 or IPV6
 #
 import os
 import socket                                           # for discovery responder
 from threading import Thread                            # Same here
 from logging import Logger
+from config import Config
+
 
 logger: Logger = None
 def set_disc_logger(lgr) -> logger:
@@ -70,7 +73,10 @@ class DiscoveryResponder(Thread):
         # subnet.
         self.device_address = (ADDR, 32227)    # Listen at multicast address, not ' '
         self.alpaca_response  = "{\"AlpacaPort\": " + str(PORT) + "}"
-        self.rsock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        if Config.addr_family == 'ipv6':
+            self.rsock = socket.socket(socket.AF_INET6, socket.SOCK_DGRAM)
+        else:
+            self.rsock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.rsock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  #share address
         if os.name != 'nt':
             # needed on Linux and OSX to share port with net core. Remove on windows
@@ -83,7 +89,10 @@ class DiscoveryResponder(Thread):
             self.rsock = 0
             raise
 
-        self.tsock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        if Config.addr_family == 'ipv6':
+            self.tsock = socket.socket(socket.AF_INET6, socket.SOCK_DGRAM)
+        else:
+            self.tsock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.tsock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  #share address
         try:
              self.tsock.bind((ADDR, 0))
