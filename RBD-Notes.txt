@@ -270,3 +270,9 @@ along with rst-check, leaving rstcheck as the linter. Good enough.
 28-Apr-2025
 -----------
 * Another request for image encoding for Camera. OK get off my butt and address GitHub Issue #18.
+
+During May 2025
+---------------
+* IPv4 and IPv6 switching, Camera Encoding, docs and notes for 1.0.3, now on Develop branch.
+* Created CameraTest branch  with  what I wanted to be a functioning Camera to test the image
+  encoding. It's probably a throwaway.
