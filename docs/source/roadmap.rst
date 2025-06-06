@@ -183,6 +183,13 @@ takes care of this.
     by providing specifics about the error, and even perhaps a suggestion on how
     to fix the problem.
 
+.. note::
+
+    These Alpaca exception classes should not be confused with raised Python
+    exceptions such as ``ZeroDivisionError`` and ``RunTimeError`` which  you can
+    raise for internal device failures. Be sure to review :ref:`excep-intro`
+    and the usage of the Alpaca exceptions in the Rotator sample.
+
 .. _driver-exception:
 
 Run-Time Errors - DriverException

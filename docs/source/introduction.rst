@@ -158,6 +158,12 @@ error message defaults to a generic descriptive message but you can override the
 message with something more detailed and helpful (recommended) when you
 instantiate the Apaca Exception class.
 
+.. note::
+
+    These Alpaca exception classes should not be confused with raised Python
+    exceptions such as ``ZeroDivisionError`` and ``RunTimeError`` which  you can
+    raise for internal device failures. See the next section.
+
 Python Exceptions
 ~~~~~~~~~~~~~~~~~
 
