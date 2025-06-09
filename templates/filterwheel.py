@@ -144,6 +144,7 @@ class devicestate:
                             DriverException(0x500, 'filterwheel.Devicestate failed', ex)).json
 
 
+@before(PreProcessRequest(maxdev))
 class disconnect:
     def on_put(self, req: Request, resp: Response, devnum: int):
         try:
@@ -188,7 +189,7 @@ class focusoffsets:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -206,7 +207,7 @@ class names:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -224,7 +225,7 @@ class position:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -239,7 +240,7 @@ class position:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         positionstr = get_request_field('Position', req)      # Raises 400 bad request if missing
         try:
             position = int(positionstr)

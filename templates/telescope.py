@@ -183,6 +183,7 @@ class devicestate:
                             DriverException(0x500, 'telescope.Devicestate failed', ex)).json
 
 
+@before(PreProcessRequest(maxdev))
 class disconnect:
     def on_put(self, req: Request, resp: Response, devnum: int):
         try:
@@ -227,7 +228,7 @@ class abortslew:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # -----------------------------
             ### DEVICE OPERATION(PARAM) ###
@@ -245,7 +246,7 @@ class alignmentmode:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -263,7 +264,7 @@ class altitude:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -281,7 +282,7 @@ class aperturearea:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -299,7 +300,7 @@ class aperturediameter:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -317,7 +318,7 @@ class athome:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -335,7 +336,7 @@ class atpark:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -353,7 +354,7 @@ class axisrates:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         axisstr = get_request_field('Axis', req)      # Raises 400 bad request if missing
         try:
             axis = int(axisstr)
@@ -383,7 +384,7 @@ class azimuth:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -401,7 +402,7 @@ class canfindhome:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -419,7 +420,7 @@ class canmoveaxis:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         axisstr = get_request_field('Axis', req)      # Raises 400 bad request if missing
         try:
             axis = int(axisstr)
@@ -449,7 +450,7 @@ class canpark:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -467,7 +468,7 @@ class canpulseguide:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -485,7 +486,7 @@ class cansetdeclinationrate:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -503,7 +504,7 @@ class cansetguiderates:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -521,7 +522,7 @@ class cansetpark:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -539,7 +540,7 @@ class cansetpierside:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -557,7 +558,7 @@ class cansetrightascensionrate:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -575,7 +576,7 @@ class cansettracking:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -593,7 +594,7 @@ class canslew:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -611,7 +612,7 @@ class canslewaltaz:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -629,7 +630,7 @@ class canslewaltazasync:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -647,7 +648,7 @@ class canslewasync:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -665,7 +666,7 @@ class cansync:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -683,7 +684,7 @@ class cansyncaltaz:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -701,7 +702,7 @@ class canunpark:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -719,7 +720,7 @@ class declination:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -737,7 +738,7 @@ class declinationrate:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -752,7 +753,7 @@ class declinationrate:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         declinationratestr = get_request_field('DeclinationRate', req)      # Raises 400 bad request if missing
         try:
             declinationrate = float(declinationratestr)
@@ -778,7 +779,7 @@ class destinationsideofpier:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         rightascensionstr = get_request_field('RightAscension', req)      # Raises 400 bad request if missing
         try:
             rightascension = float(rightascensionstr)
@@ -812,7 +813,7 @@ class doesrefraction:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -827,7 +828,7 @@ class doesrefraction:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         doesrefractionstr = get_request_field('DoesRefraction', req)      # Raises 400 bad request if missing
         try:
             doesrefraction = to_bool(doesrefractionstr)
@@ -853,7 +854,7 @@ class equatorialsystem:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -871,7 +872,7 @@ class findhome:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # -----------------------------
             ### DEVICE OPERATION(PARAM) ###
@@ -889,7 +890,7 @@ class focallength:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -907,7 +908,7 @@ class guideratedeclination:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -922,7 +923,7 @@ class guideratedeclination:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         guideratedeclinationstr = get_request_field('GuideRateDeclination', req)      # Raises 400 bad request if missing
         try:
             guideratedeclination = float(guideratedeclinationstr)
@@ -948,7 +949,7 @@ class guideraterightascension:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -963,7 +964,7 @@ class guideraterightascension:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         guideraterightascensionstr = get_request_field('GuideRateRightAscension', req)      # Raises 400 bad request if missing
         try:
             guideraterightascension = float(guideraterightascensionstr)
@@ -989,7 +990,7 @@ class ispulseguiding:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1007,7 +1008,7 @@ class moveaxis:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         axisstr = get_request_field('Axis', req)      # Raises 400 bad request if missing
         try:
             axis = int(axisstr)
@@ -1045,7 +1046,7 @@ class park:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # -----------------------------
             ### DEVICE OPERATION(PARAM) ###
@@ -1063,7 +1064,7 @@ class pulseguide:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         directionstr = get_request_field('Direction', req)      # Raises 400 bad request if missing
         try:
             direction = int(directionstr)
@@ -1101,7 +1102,7 @@ class rightascension:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1119,7 +1120,7 @@ class rightascensionrate:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1134,7 +1135,7 @@ class rightascensionrate:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         rightascensionratestr = get_request_field('RightAscensionRate', req)      # Raises 400 bad request if missing
         try:
             rightascensionrate = float(rightascensionratestr)
@@ -1160,7 +1161,7 @@ class setpark:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # -----------------------------
             ### DEVICE OPERATION(PARAM) ###
@@ -1178,7 +1179,7 @@ class sideofpier:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1193,7 +1194,7 @@ class sideofpier:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         sideofpierstr = get_request_field('SideOfPier', req)      # Raises 400 bad request if missing
         try:
             sideofpier = int(sideofpierstr)
@@ -1223,7 +1224,7 @@ class siderealtime:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1241,7 +1242,7 @@ class siteelevation:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1256,7 +1257,7 @@ class siteelevation:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         siteelevationstr = get_request_field('SiteElevation', req)      # Raises 400 bad request if missing
         try:
             siteelevation = float(siteelevationstr)
@@ -1282,7 +1283,7 @@ class sitelatitude:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1297,7 +1298,7 @@ class sitelatitude:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         sitelatitudestr = get_request_field('SiteLatitude', req)      # Raises 400 bad request if missing
         try:
             sitelatitude = float(sitelatitudestr)
@@ -1323,7 +1324,7 @@ class sitelongitude:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1338,7 +1339,7 @@ class sitelongitude:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         sitelongitudestr = get_request_field('SiteLongitude', req)      # Raises 400 bad request if missing
         try:
             sitelongitude = float(sitelongitudestr)
@@ -1364,7 +1365,7 @@ class slewing:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1382,7 +1383,7 @@ class slewsettletime:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1397,7 +1398,7 @@ class slewsettletime:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         slewsettletimestr = get_request_field('SlewSettleTime', req)      # Raises 400 bad request if missing
         try:
             slewsettletime = int(slewsettletimestr)
@@ -1423,7 +1424,7 @@ class slewtoaltaz:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         azimuthstr = get_request_field('Azimuth', req)      # Raises 400 bad request if missing
         try:
             azimuth = float(azimuthstr)
@@ -1457,7 +1458,7 @@ class slewtoaltazasync:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         azimuthstr = get_request_field('Azimuth', req)      # Raises 400 bad request if missing
         try:
             azimuth = float(azimuthstr)
@@ -1491,7 +1492,7 @@ class slewtocoordinates:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         rightascensionstr = get_request_field('RightAscension', req)      # Raises 400 bad request if missing
         try:
             rightascension = float(rightascensionstr)
@@ -1525,7 +1526,7 @@ class slewtocoordinatesasync:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         rightascensionstr = get_request_field('RightAscension', req)      # Raises 400 bad request if missing
         try:
             rightascension = float(rightascensionstr)
@@ -1559,7 +1560,7 @@ class slewtotarget:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # -----------------------------
             ### DEVICE OPERATION(PARAM) ###
@@ -1577,7 +1578,7 @@ class slewtotargetasync:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # -----------------------------
             ### DEVICE OPERATION(PARAM) ###
@@ -1595,7 +1596,7 @@ class synctoaltaz:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         azimuthstr = get_request_field('Azimuth', req)      # Raises 400 bad request if missing
         try:
             azimuth = float(azimuthstr)
@@ -1629,7 +1630,7 @@ class synctocoordinates:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         rightascensionstr = get_request_field('RightAscension', req)      # Raises 400 bad request if missing
         try:
             rightascension = float(rightascensionstr)
@@ -1663,7 +1664,7 @@ class synctotarget:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # -----------------------------
             ### DEVICE OPERATION(PARAM) ###
@@ -1681,7 +1682,7 @@ class targetdeclination:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1696,7 +1697,7 @@ class targetdeclination:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         targetdeclinationstr = get_request_field('TargetDeclination', req)      # Raises 400 bad request if missing
         try:
             targetdeclination = float(targetdeclinationstr)
@@ -1722,7 +1723,7 @@ class targetrightascension:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1737,7 +1738,7 @@ class targetrightascension:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         targetrightascensionstr = get_request_field('TargetRightAscension', req)      # Raises 400 bad request if missing
         try:
             targetrightascension = float(targetrightascensionstr)
@@ -1763,7 +1764,7 @@ class tracking:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1778,7 +1779,7 @@ class tracking:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         trackingstr = get_request_field('Tracking', req)      # Raises 400 bad request if missing
         try:
             tracking = to_bool(trackingstr)
@@ -1804,7 +1805,7 @@ class trackingrate:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1819,7 +1820,7 @@ class trackingrate:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         trackingratestr = get_request_field('TrackingRate', req)      # Raises 400 bad request if missing
         try:
             trackingrate = int(trackingratestr)
@@ -1845,7 +1846,7 @@ class trackingrates:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1863,7 +1864,7 @@ class utcdate:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -1878,7 +1879,7 @@ class utcdate:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         utcdate = get_request_field('UTCDate', req)         # Raises 400 bad request if missing
         ### INTEPRET AS NEEDED OR FAIL ###  # Raise Alpaca InvalidValueException with details!
         try:
@@ -1898,7 +1899,7 @@ class unpark:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # -----------------------------
             ### DEVICE OPERATION(PARAM) ###

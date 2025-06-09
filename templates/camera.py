@@ -176,6 +176,7 @@ class devicestate:
                             DriverException(0x500, 'camera.Devicestate failed', ex)).json
 
 
+@before(PreProcessRequest(maxdev))
 class disconnect:
     def on_put(self, req: Request, resp: Response, devnum: int):
         try:

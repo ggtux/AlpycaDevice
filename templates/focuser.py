@@ -144,6 +144,7 @@ class devicestate:
                             DriverException(0x500, 'focuser.Devicestate failed', ex)).json
 
 
+@before(PreProcessRequest(maxdev))
 class disconnect:
     def on_put(self, req: Request, resp: Response, devnum: int):
         try:
@@ -188,7 +189,7 @@ class absolute:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -206,7 +207,7 @@ class ismoving:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -224,7 +225,7 @@ class maxincrement:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -242,7 +243,7 @@ class maxstep:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -260,7 +261,7 @@ class position:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -278,7 +279,7 @@ class stepsize:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -296,7 +297,7 @@ class tempcomp:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -311,7 +312,7 @@ class tempcomp:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         tempcompstr = get_request_field('TempComp', req)      # Raises 400 bad request if missing
         try:
             tempcomp = to_bool(tempcompstr)
@@ -337,7 +338,7 @@ class tempcompavailable:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -355,7 +356,7 @@ class temperature:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -373,7 +374,7 @@ class halt:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # -----------------------------
             ### DEVICE OPERATION(PARAM) ###
@@ -391,7 +392,7 @@ class move:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         positionstr = get_request_field('Position', req)      # Raises 400 bad request if missing
         try:
             position = int(positionstr)

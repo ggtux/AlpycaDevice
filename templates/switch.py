@@ -144,6 +144,7 @@ class devicestate:
                             DriverException(0x500, 'switch.Devicestate failed', ex)).json
 
 
+@before(PreProcessRequest(maxdev))
 class disconnect:
     def on_put(self, req: Request, resp: Response, devnum: int):
         try:
@@ -188,7 +189,7 @@ class maxswitch:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -206,7 +207,7 @@ class canwrite:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         idstr = get_request_field('Id', req)      # Raises 400 bad request if missing
         try:
             id = int(idstr)
@@ -232,7 +233,7 @@ class getswitch:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         idstr = get_request_field('Id', req)      # Raises 400 bad request if missing
         try:
             id = int(idstr)
@@ -258,7 +259,7 @@ class getswitchdescription:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         idstr = get_request_field('Id', req)      # Raises 400 bad request if missing
         try:
             id = int(idstr)
@@ -284,7 +285,7 @@ class getswitchname:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         idstr = get_request_field('Id', req)      # Raises 400 bad request if missing
         try:
             id = int(idstr)
@@ -310,7 +311,7 @@ class getswitchvalue:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         idstr = get_request_field('Id', req)      # Raises 400 bad request if missing
         try:
             id = int(idstr)
@@ -336,7 +337,7 @@ class minswitchvalue:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         idstr = get_request_field('Id', req)      # Raises 400 bad request if missing
         try:
             id = int(idstr)
@@ -362,7 +363,7 @@ class maxswitchvalue:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         idstr = get_request_field('Id', req)      # Raises 400 bad request if missing
         try:
             id = int(idstr)
@@ -388,7 +389,7 @@ class switchstep:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         idstr = get_request_field('Id', req)      # Raises 400 bad request if missing
         try:
             id = int(idstr)
@@ -414,7 +415,7 @@ class setswitch:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         idstr = get_request_field('Id', req)      # Raises 400 bad request if missing
         try:
             id = int(idstr)
@@ -448,7 +449,7 @@ class setswitchname:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         idstr = get_request_field('Id', req)      # Raises 400 bad request if missing
         try:
             id = int(idstr)
@@ -476,7 +477,7 @@ class setswitchvalue:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         idstr = get_request_field('Id', req)      # Raises 400 bad request if missing
         try:
             id = int(idstr)
@@ -510,7 +511,7 @@ class canasync:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         idstr = get_request_field('Id', req)      # Raises 400 bad request if missing
         try:
             id = int(idstr)
@@ -536,7 +537,7 @@ class statechangecomplete:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         idstr = get_request_field('Id', req)      # Raises 400 bad request if missing
         try:
             id = int(idstr)
@@ -562,7 +563,7 @@ class cancelasync:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         idstr = get_request_field('Id', req)      # Raises 400 bad request if missing
         try:
             id = int(idstr)
@@ -588,7 +589,7 @@ class setasync:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         idstr = get_request_field('Id', req)      # Raises 400 bad request if missing
         try:
             id = int(idstr)
@@ -622,7 +623,7 @@ class setasyncvalue:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         idstr = get_request_field('Id', req)      # Raises 400 bad request if missing
         try:
             id = int(idstr)

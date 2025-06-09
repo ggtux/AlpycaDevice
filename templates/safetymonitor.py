@@ -144,6 +144,7 @@ class devicestate:
                             DriverException(0x500, 'safetymonitor.Devicestate failed', ex)).json
 
 
+@before(PreProcessRequest(maxdev))
 class disconnect:
     def on_put(self, req: Request, resp: Response, devnum: int):
         try:
@@ -188,7 +189,7 @@ class issafe:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##

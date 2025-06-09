@@ -144,6 +144,7 @@ class devicestate:
                             DriverException(0x500, 'observingconditions.Devicestate failed', ex)).json
 
 
+@before(PreProcessRequest(maxdev))
 class disconnect:
     def on_put(self, req: Request, resp: Response, devnum: int):
         try:
@@ -188,7 +189,7 @@ class averageperiod:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -203,7 +204,7 @@ class averageperiod:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         averageperiodstr = get_request_field('AveragePeriod', req)      # Raises 400 bad request if missing
         try:
             averageperiod = float(averageperiodstr)
@@ -229,7 +230,7 @@ class cloudcover:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -247,7 +248,7 @@ class dewpoint:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -265,7 +266,7 @@ class humidity:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -283,7 +284,7 @@ class pressure:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -301,7 +302,7 @@ class rainrate:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -319,7 +320,7 @@ class skybrightness:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -337,7 +338,7 @@ class skyquality:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -355,7 +356,7 @@ class skytemperature:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -373,7 +374,7 @@ class starfwhm:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -391,7 +392,7 @@ class temperature:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -409,7 +410,7 @@ class winddirection:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -427,7 +428,7 @@ class windgust:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -445,7 +446,7 @@ class windspeed:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -463,7 +464,7 @@ class refresh:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # -----------------------------
             ### DEVICE OPERATION(PARAM) ###
@@ -481,7 +482,7 @@ class sensordescription:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         sensorname = get_request_field('SensorName', req)         # Raises 400 bad request if missing
         ### INTEPRET AS NEEDED OR FAIL ###  # Raise Alpaca InvalidValueException with details!
         try:
@@ -501,7 +502,7 @@ class timesincelastupdate:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         sensorname = get_request_field('SensorName', req)         # Raises 400 bad request if missing
         ### INTEPRET AS NEEDED OR FAIL ###  # Raise Alpaca InvalidValueException with details!
         try:

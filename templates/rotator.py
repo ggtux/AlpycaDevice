@@ -144,6 +144,7 @@ class devicestate:
                             DriverException(0x500, 'rotator.Devicestate failed', ex)).json
 
 
+@before(PreProcessRequest(maxdev))
 class disconnect:
     def on_put(self, req: Request, resp: Response, devnum: int):
         try:
@@ -188,7 +189,7 @@ class canreverse:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -206,7 +207,7 @@ class ismoving:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -224,7 +225,7 @@ class mechanicalposition:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -242,7 +243,7 @@ class position:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -260,7 +261,7 @@ class reverse:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -275,7 +276,7 @@ class reverse:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         reversestr = get_request_field('Reverse', req)      # Raises 400 bad request if missing
         try:
             reverse = to_bool(reversestr)
@@ -301,7 +302,7 @@ class stepsize:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -319,7 +320,7 @@ class targetposition:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -337,7 +338,7 @@ class halt:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # -----------------------------
             ### DEVICE OPERATION(PARAM) ###
@@ -355,7 +356,7 @@ class move:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         positionstr = get_request_field('Position', req)      # Raises 400 bad request if missing
         try:
             position = float(positionstr)
@@ -381,7 +382,7 @@ class moveabsolute:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         positionstr = get_request_field('Position', req)      # Raises 400 bad request if missing
         try:
             position = float(positionstr)
@@ -407,7 +408,7 @@ class movemechanical:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         positionstr = get_request_field('Position', req)      # Raises 400 bad request if missing
         try:
             position = float(positionstr)
@@ -433,7 +434,7 @@ class sync:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         positionstr = get_request_field('Position', req)      # Raises 400 bad request if missing
         try:
             position = float(positionstr)

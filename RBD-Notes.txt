@@ -276,3 +276,7 @@ During May 2025
 * IPv4 and IPv6 switching, Camera Encoding, docs and notes for 1.0.3, now on Develop branch.
 * Created CameraTest branch  with  what I wanted to be a functioning Camera to test the image
   encoding. It's probably a throwaway.
+
+June 9 2025
+-----------
+* Fix all 'class disconnect' in templates to have @before() decorator. Fixed bug in generator common code.

@@ -63,7 +63,10 @@
 #               values in the enum. This addresses GitHub issue #13
 # 16-Sep-2024   rbd InvalidValueException error messages now use
 #               f-strings instead of concatenation.
-# 07-Jan-2025   rbd 1.1 use the new JSON input with the correct 'Id' casing for Switch.
+# 07-Jan-2025   rbd 1.0.1 use the new JSON input with the correct 'Id'
+#               casing for Switch.
+# 09-Jun-2025   rbd 1.0.3 Add missing @before() decorator to all templates,
+#               fix generator for this too.
 
 import json
 import os.path
@@ -213,7 +216,7 @@ class devicestate:
             resp.text = PropertyResponse(None, req,
                             DriverException(0x500, '{devname}.Devicestate failed', ex)).json
 
-
+@before(PreProcessRequest(maxdev))
 class disconnect:
     def on_put(self, req: Request, resp: Response, devnum: int):
         try:

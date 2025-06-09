@@ -165,6 +165,7 @@ class devicestate:
                             DriverException(0x500, 'covercalibrator.Devicestate failed', ex)).json
 
 
+@before(PreProcessRequest(maxdev))
 class disconnect:
     def on_put(self, req: Request, resp: Response, devnum: int):
         try:
@@ -209,7 +210,7 @@ class brightness:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -227,7 +228,7 @@ class calibratorchanging:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -245,7 +246,7 @@ class calibratorstate:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -263,7 +264,7 @@ class covermoving:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -281,7 +282,7 @@ class coverstate:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -299,7 +300,7 @@ class maxbrightness:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # ----------------------
             val = ## GET PROPERTY ##
@@ -317,7 +318,7 @@ class calibratoroff:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # -----------------------------
             ### DEVICE OPERATION(PARAM) ###
@@ -335,7 +336,7 @@ class calibratoron:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         brightnessstr = get_request_field('Brightness', req)      # Raises 400 bad request if missing
         try:
             brightness = int(brightnessstr)
@@ -361,7 +362,7 @@ class closecover:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # -----------------------------
             ### DEVICE OPERATION(PARAM) ###
@@ -379,7 +380,7 @@ class haltcover:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # -----------------------------
             ### DEVICE OPERATION(PARAM) ###
@@ -397,7 +398,7 @@ class opencover:
             resp.text = PropertyResponse(None, req,
                             NotConnectedException()).json
             return
-        
+
         try:
             # -----------------------------
             ### DEVICE OPERATION(PARAM) ###

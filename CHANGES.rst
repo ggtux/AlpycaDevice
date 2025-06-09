@@ -6,6 +6,7 @@ Version 1.0.3 Update (2025-05-01)
   EmileRouxSMB on GitHub.
 * Catch non-numeric trash in ClientTransactionID, and in that case silently
   return 0.
+* Restore missing ``@before()`` decorator on ``class disconnect`` all templates
 
 Version 1.0.2 Update (2025-02-16)
 =================================
