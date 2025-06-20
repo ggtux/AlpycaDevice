@@ -280,3 +280,11 @@ During May 2025
 June 9 2025
 -----------
 * Fix all 'class disconnect' in templates to have @before() decorator. Fixed bug in generator common code.
+
+17-Jun-2025
+-----------
+* Move class ImageArrayResponse out of shr and into the camera template to avoid importing the huge
+  numpy and struct packages for other devices.
+* See this thread from Reid Smythe https://ascomtalk.groups.io/g/Developer/topic/alpyca_and_skysafari_http_1_0/113683962
+  Cannot get wsgiref.simple_server to respond with HTTP/1.1. I've tried so many tricks. Reid's solution
+  is nerve wracking... maybe.

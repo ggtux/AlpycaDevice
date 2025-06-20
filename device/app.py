@@ -56,12 +56,15 @@
 # 03-Jan-2025   rbd 1.0.1 Clarify devices vs device types at import site. Comment only,
 #               no logic changes.
 # 20-May-2025   rbd 1.0.3 Issue #19. Allow switching between IPv4 and IPv6 in config.
+# 19-Jun-2025   rbd 1.0.3 Thanks to ASCOM Help member Reid Smythe for the solution. Force
+#               the wsgiref.simple_server to run in HTTP/1.1. See this discussion:
+#               https://ascomtalk.groups.io/g/Developer/topic/alpyca_and_skysafari_http_1_0/113683962
 #
 import sys
 import traceback
 import inspect
 import socket
-from wsgiref.simple_server import make_server, WSGIServer, WSGIRequestHandler
+from wsgiref.simple_server import make_server, ServerHandler, WSGIServer, WSGIRequestHandler
 from enum import IntEnum
 
 # -- isort wants the above line to be blank --
@@ -69,6 +72,7 @@ from enum import IntEnum
 import discovery
 import exceptions
 from falcon import Request, Response, App, HTTPInternalServerError
+# PyLance chokes on management but it is OK
 import management
 import setup
 import log
@@ -86,7 +90,35 @@ API_VERSION = 1
 #--------------
 
 class LoggingWSGIRequestHandler(WSGIRequestHandler):
-    """Subclass of  WSGIRequestHandler allowing us to control WSGI server's logging"""
+    """
+        Subclass of  WSGIRequestHandler allowing us to control WSGI server's logging
+        and to force the simpel server to use HTTP/1.1. Despite many bits of advice on
+        the internet and AI, setting protocol_version = 'HTTP/1.1' has no effect. This
+        just hijacks the ServerHandler's handle() method, setting its internal version
+        string to HTTP/1.1.
+    """
+    def handle(self):
+        # ServerHandler.http_version = 'HTTP/1.1'
+        # super().handle()
+        # Copy the parent method but override ServerHandler
+        self.raw_requestline = self.rfile.readline(65537)
+        if len(self.raw_requestline) > 65536:
+            self.requestline = ''
+            self.request_version = ''
+            self.command = ''
+            self.send_error(414)
+            return
+
+        if not self.parse_request():
+            return
+
+        handler = ServerHandler(
+            self.rfile, self.wfile, self.get_stderr(), self.get_environ(),
+            multithread=False,
+        )
+        handler.http_version = "1.1"  # Override here
+        handler.request_handler = self
+        handler.run(self.server.get_app())
 
     def log_message(self, format: str, *args):
         """Log a message from within the Python **wsgiref** simple server
@@ -308,8 +340,10 @@ def main():
     #
     # Startup the HTTP engine with Falcon on top.
     #
-    with make_server(Config.ip_address, Config.port, falc_app,
-                server_class=server_class, handler_class=LoggingWSGIRequestHandler) as httpd:
+    httpd = make_server(Config.ip_address, Config.port, falc_app,
+                server_class=server_class, handler_class=LoggingWSGIRequestHandler)
+    LoggingWSGIRequestHandler.protocol_version = 'HTTP/1.1'
+    with httpd:
         logger.info(f'==STARTUP== Serving {Config.addr_family} on {Config.ip_address}:{Config.port}. Time stamps are UTC.')
         # Serve until process is killed
         httpd.serve_forever()
